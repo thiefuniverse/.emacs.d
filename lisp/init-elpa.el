@@ -14,7 +14,7 @@
 
 
 ;;; Standard package repositories
-
+(setq package-archives '())
 (add-to-list 'package-archives '( "melpa-cn" . "http://elpa.zilongshanren.com/melpa/") t)
 (add-to-list 'package-archives '( "org-cn" . "http://elpa.zilongshanren.com/org/") t)
 (add-to-list 'package-archives '( "gnu-cn" . "http://elpa.zilongshanren.com/gnu/") t)
@@ -117,7 +117,6 @@ advice for `require-package', to which ARGS are passed."
       (sanityinc/set-tabulated-list-column-width "Archive" longest-archive-name))))
 
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
-
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
