@@ -30,6 +30,7 @@
 ;; Bootstrap config
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-utils)
+(require 'init-const)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 
 
@@ -52,6 +53,7 @@
 (require-package 'command-log-mode)
 
 (require 'init-frame-hooks)
+(require 'init-rime)
 (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
@@ -62,7 +64,6 @@
 (require 'init-ibuffer)
 (require 'init-flymake)
 (require 'init-corfu) ;; completion
-
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)
@@ -88,7 +89,6 @@
 (require 'init-css)
 (require 'init-http)
 (require 'init-python)
-(require 'init-elm)
 (require 'init-sql)
 (require 'init-toml)
 (require 'init-yaml)
@@ -143,9 +143,12 @@
 ;; Locales (setting them earlier in this file doesn't work in X)
 (require 'init-locales)
 
+(require 'init-keybinding)
 ;; Allow users to provide an optional "init-local" containing personal settings
 (require 'init-local nil t)
 
+(flythief/setup-fonts)
+(global-visual-line-mode 1)
 (provide 'init)
 
 ;; Local Variables:

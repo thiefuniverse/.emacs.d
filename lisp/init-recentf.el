@@ -7,6 +7,5 @@
  recentf-max-saved-items 1000
  recentf-exclude `("/tmp/" "/ssh:" ,(concat package-user-dir "/.*-autoloads\\.el\\'")))
 
-
 (provide 'init-recentf)
 ;;; init-recentf.el ends here
