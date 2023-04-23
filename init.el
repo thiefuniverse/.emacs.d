@@ -63,13 +63,13 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flymake)
-(require 'init-corfu) ;; completion
+;;;(require 'init-corfu) ;; completion
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)
 (require 'init-windows)
 (require 'init-sessions)
-(require 'init-mmm)
+;;;(require 'init-mmm)
 
 (require 'init-editing-utils)
 (require 'init-whitespace)
@@ -88,7 +88,7 @@
 (require 'init-html)
 (require 'init-css)
 (require 'init-http)
-(require 'init-python)
+;;;(require 'init-python)
 (require 'init-sql)
 (require 'init-toml)
 (require 'init-yaml)

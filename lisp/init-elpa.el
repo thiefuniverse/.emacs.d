@@ -15,9 +15,9 @@
 
 ;;; Standard package repositories
 (setq package-archives '())
-(add-to-list 'package-archives '( "melpa-cn" . "http://elpa.zilongshanren.com/melpa/") t)
-(add-to-list 'package-archives '( "org-cn" . "http://elpa.zilongshanren.com/org/") t)
-(add-to-list 'package-archives '( "gnu-cn" . "http://elpa.zilongshanren.com/gnu/") t)
+(add-to-list 'package-archives '( "melpa-cn" . "http://1.15.88.122/melpa/") t)
+(add-to-list 'package-archives '( "org-cn" . "http://1.15.88.122/org/") t)
+(add-to-list 'package-archives '( "gnu-cn" . "http://1.15.88.122/gnu/") t)
 ;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
 
 
@@ -98,6 +98,7 @@ advice for `require-package', to which ARGS are passed."
 (fullframe list-packages quit-window)
 
 
+(setq package-check-signature nil)
 (let ((package-check-signature nil))
   (require-package 'gnu-elpa-keyring-update))
 

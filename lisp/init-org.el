@@ -385,6 +385,8 @@ typical word processor."
       (sqlite . t)))))
 
 (use-package org-bullets
+  :ensure t
+  :defer t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
@@ -393,40 +395,41 @@ typical word processor."
 
 ;;; get org store path from environment
 (defconst org_store_path "$ORG_STORE_PATH")
-;;; org roam
-(use-package org-roam
-  :custom
-  (org-roam-directory (file-truename (substitute-in-file-name org_store_path)))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
-  :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol))
+;; ;;; org roam
+;; (use-package org-roam
+;;   :custom
+;;   (org-roam-directory (file-truename (substitute-in-file-name org_store_path)))
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n g" . org-roam-graph)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n c" . org-roam-capture)
+;;          ;; Dailies
+;;          ("C-c n j" . org-roam-dailies-capture-today))
+;;   :config
+;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+;;   (org-roam-db-autosync-mode)
+;;   (require 'org-roam-protocol))
 
-(defun org-roam-node-visit (node &optional other-window force)
-  "From the current buffer, visit NODE. Return the visited buffer.
-Display the buffer in the selected window.  With a prefix
-argument OTHER-WINDOW display the buffer in another window
-instead.
+;; (defun org-roam-node-visit (node &optional other-window force)
+;;   "From the current buffer, visit NODE. Return the visited buffer.
+;; Display the buffer in the selected window.  With a prefix
+;; argument OTHER-WINDOW display the buffer in another window
+;; instead.
 
-If NODE is already visited, this won't automatically move the
-point to the beginning of the NODE, unless FORCE is non-nil. In
-interactive calls FORCE always set to t."
-  (interactive (list (org-roam-node-at-point t) current-prefix-arg t))
-  (org-roam-node-open node (if other-window
-                               #'switch-to-buffer-other-window
-                             #'pop-to-buffer-same-window)
-                      force))
+;; If NODE is already visited, this won't automatically move the
+;; point to the beginning of the NODE, unless FORCE is non-nil. In
+;; interactive calls FORCE always set to t."
+;;   (interactive (list (org-roam-node-at-point t) current-prefix-arg t))
+;;   (org-roam-node-open node (if other-window
+;;                                #'switch-to-buffer-other-window
+;;                              #'pop-to-buffer-same-window)
+;;                       force))
 
 (use-package auto-package-update
   :ensure t
+  :defer t
   :config
   (setq auto-package-update-delete-old-versions t
         auto-package-update-interval 4)

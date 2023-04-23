@@ -1,5 +1,6 @@
 (use-package posframe)
 (use-package rime
+  :defer t
   :custom
   (default-input-method "rime")
   ;;; copy librime-emacs.dll to emacs install directory

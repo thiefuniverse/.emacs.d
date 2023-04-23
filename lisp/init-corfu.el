@@ -89,11 +89,11 @@
   (yas-global-mode 1))
 (use-package posframe)
 (use-package all-the-icons)
-(require 'lsp-bridge)
-(require 'corfu-info)
-(require 'corfu-history)
-(require 'lsp-bridge-icon)
-(require 'lsp-bridge-orderless)
+;; (require 'lsp-bridge)
+;; (require 'corfu-info)
+;; (require 'corfu-history)
+;; (require 'lsp-bridge-icon)
+;; (require 'lsp-bridge-orderless)
 ;; For corfu users:
 
 (setq lsp-bridge-completion-provider 'corfu)
