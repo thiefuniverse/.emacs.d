@@ -93,11 +93,12 @@ advice for `require-package', to which ARGS are passed."
               (package--save-selected-packages
                (seq-uniq (append sanityinc/required-packages package-selected-packages))))))
 
-
+
 (require-package 'fullframe)
+;;; make list-packages get full frame view
 (fullframe list-packages quit-window)
 
-
+;; 
 (setq package-check-signature nil)
 (let ((package-check-signature nil))
   (require-package 'gnu-elpa-keyring-update))

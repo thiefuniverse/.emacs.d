@@ -5,9 +5,11 @@
   (general-create-definer thief-leader-def
     :prefix "SPC"
     :keymaps 'normal
-    "a" 'org-agenda
     "c" 'org-capture
     "d" 'xref-find-definitions
+    "b" 'consult-buffer
+    "f" 'consult-recent-file
+    ":" 'execute-extended-command
     )
   (thief-leader-def
     ;;:keymaps 'org-mode-map
@@ -18,7 +20,7 @@
   ;;   :keymaps 'evil-normal-state-map
   ;;   "c" 'org-capture
   ;;   )
-    )
+  )
 ;;(define-key evil-normal-state-map (kbd "SPC") 'nil)
 ;;;(unbind-key (kbd "SPC"))
 ;; set local leader
