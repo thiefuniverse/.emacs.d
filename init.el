@@ -60,8 +60,9 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
-(require 'init-flymake)
-;;;(require 'init-corfu) ;; completion
+(require 'init-scratch)
+;;;(require 'init-flymake)
+(require 'init-corfu) ;; completion
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)

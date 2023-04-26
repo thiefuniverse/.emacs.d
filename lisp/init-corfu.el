@@ -13,6 +13,7 @@
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
   (corfu-history-mode 1)
+  ;;;(corfu-popupinfo-mode 1)
   (savehist-mode 1)
   (add-to-list 'savehist-additional-variables 'corfu-history)
   ;; Enable Corfu only for certain modes.
@@ -33,10 +34,6 @@
   :init
   (global-corfu-mode))
 
-(use-package corfu-doc
-  :requires (corfu)
-  :config
-  (add-hook 'corfu-mode-hook #'corfu-doc-mode))
 ;; A few more useful configurations...
 (use-package emacs
   :init
@@ -75,13 +72,13 @@
 (setq corfu-auto t
       corfu-quit-no-match 'separator) ;; or t
 
-(use-package kind-icon
-  :ensure t
-  :after corfu
-  :custom
-  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+;;;(use-package kind-icon
+;;;  :ensure t
+;;;  :after corfu
+;;;  :custom
+;;;  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+;;;  :config
+;;;  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package yasnippet-snippets)
 (use-package yasnippet
@@ -100,6 +97,5 @@
 ;;;(global-lsp-bridge-mode)
 ;;;(add-hook 'lsp-bridge-mode-hook (lambda ()
 ;;;                                  (add-hook 'xref-backend-functions #'lsp-bridge-xref-backend nil t)))
-
 
 (provide 'init-corfu)
