@@ -24,6 +24,8 @@
   :bind
   (:map corfu-map
         ("TAB" . corfu-next)
+        ("C-n" . corfu-next)
+        ("C-p" . corfu-previous)
         ([tab] . corfu-next)
         ("S-TAB" . corfu-previous)
         ([backtab] . corfu-previous)
@@ -62,23 +64,23 @@
 (use-package orderless
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
-  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
-  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq  orderless-matching-styles '(orderless-flex)
+         orderless-component-separator #'orderless-escapable-split-on-space)
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles . (partial-completion))))))
+
 
 ;; Enable auto completion and configure quitting
 (setq corfu-auto t
       corfu-quit-no-match 'separator) ;; or t
 
-;;;(use-package kind-icon
-;;;  :ensure t
-;;;  :after corfu
-;;;  :custom
-;;;  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
-;;;  :config
-;;;  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+(use-package kind-icon
+  :ensure t
+  :custom
+  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package yasnippet-snippets)
 (use-package yasnippet
@@ -88,7 +90,6 @@
 (use-package all-the-icons)
 ;; (require 'lsp-bridge)
 ;; (require 'corfu-info)
-;; (require 'corfu-history)
 ;; (require 'lsp-bridge-icon)
 ;; (require 'lsp-bridge-orderless)
 ;; For corfu users:
@@ -97,5 +98,6 @@
 ;;;(global-lsp-bridge-mode)
 ;;;(add-hook 'lsp-bridge-mode-hook (lambda ()
 ;;;                                  (add-hook 'xref-backend-functions #'lsp-bridge-xref-backend nil t)))
+
 
 (provide 'init-corfu)

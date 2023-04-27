@@ -27,6 +27,9 @@
   (define-key flymake-mode-map (kbd "C-c ! p") 'flymake-goto-prev-error)
   (define-key flymake-mode-map (kbd "C-c ! c") 'flymake-start))
 
+(when (maybe-require-package 'package-lint-flymake)
+  (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
+
 (unless (version< emacs-version "28.1")
   (setq eldoc-documentation-function 'eldoc-documentation-compose))
 
