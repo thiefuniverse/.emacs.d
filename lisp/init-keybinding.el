@@ -6,7 +6,7 @@
     :prefix "SPC"
     :keymaps 'normal
     "d" 'xref-find-definitions
-    ":" 'execute-extended-command
+    ";" 'execute-extended-command
     "P" 'edit-config-file
     "x" 'jump-scratch
     "k" 'delete-other-windows
@@ -72,5 +72,8 @@
 (define-key evil-motion-state-map (kbd "t") 'evil-jump-item)
 (define-key evil-motion-state-map (kbd "C-;") 'evil-end-of-line)
 
+
+(define-key minibuffer-local-map (kbd "C-;") 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-map (kbd "C-k") 'backward-delete-char)
 ;; set local leader
 (provide 'init-keybinding)

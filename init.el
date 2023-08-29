@@ -51,8 +51,6 @@
 (require-package 'command-log-mode)
 
 (require 'init-frame-hooks)
-(require 'init-rime)
-(require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
@@ -61,7 +59,6 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-scratch)
-;;;(require 'init-flymake)
 (require 'init-corfu) ;; completion
 (require 'init-recentf)
 (require 'init-minibuffer)
@@ -104,7 +101,6 @@
 (require 'init-folding)
 (require 'init-dash)
 
-;; (require 'init-mu)
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
