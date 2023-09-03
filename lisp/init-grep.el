@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;;; grep word in project
+(use-package deadgrep)
+
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
 

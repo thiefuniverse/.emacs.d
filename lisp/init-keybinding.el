@@ -10,24 +10,44 @@
     "P" 'edit-config-file
     "x" 'jump-scratch
     "k" 'delete-other-windows
+    "," 'pop-tag-mark
+    "-" 'split-window-below
+    "\\" 'split-window-right
+    "g" 'goto-line
+    "t" 'switch-between-cpp-h
+    "o" 'switch-window
+    )
+  (thief-leader-def
+    :keymaps 'normal
+    "j" '(:ignore t :wk "jump")
+    "jl" 'consult-line
+    "jw" 'avy-goto-word-1
+    "jf" 'switch-window
+    "jk" 'consult-buffer
+    "jl" 'consult-imenu
+    "jj" 'consult-project-buffer
     )
   (thief-leader-def
     :keymaps 'normal
     "f" '(:ignore t :wk "file")
     "fr" 'consult-recent-file
-    "fd" 'delete-frame
+    "fd" 'delete-window
+    "fk" 'kill-current-buffer
+    )
+  (thief-leader-def
+    :keymaps 'normal
+    "h" '(:ignore t :wk "help")
+    "hk" 'describe-key
+    "hf" 'describe-function
+    "hv" 'describe-variable
     )
   (thief-leader-def
     :keymaps 'normal
     "o" '(:ignore t :wk "org")
-    "oa" 'org-agenda
-    "oc" 'org-capture
     )
   (thief-leader-def
     :keymaps 'normal
     "b" '(:ignore t :wk "buffer")
-    "bb" 'consult-buffer
-    "bk" 'kill-current-buffer
     )
   (thief-leader-def
     :keymaps 'normal
@@ -39,17 +59,7 @@
     )
   (thief-leader-def
     :keymaps 'normal
-    "h" '(:ignore t :wk "help")
-    "hk" 'describe-key
-    "hf" 'describe-function
-    "hv" 'describe-variable
-    )
-  (thief-leader-def
-    :keymaps 'normal
     "c" '(:ignore t :wk "consult")
-    "cl" 'consult-line
-    "ci" 'consult-imenu
-    "cm" 'consult-imenu-multi
     "cy" 'consult-yank-from-kill-ring
     )
   (thief-leader-def
@@ -57,23 +67,23 @@
     "s" '(:ignore t :wk "save")
     "sd" 'save-buffer
     )
-  (thief-leader-def
-    :keymaps 'normal
-    "j" '(:ignore t :wk "jump")
-    "jc" 'avy-goto-char
-    "jl" 'avy-goto-line
-    "jw" 'avy-goto-word-0
-    )
   )
 
 ;;; modify evil mode actions
 (define-key evil-normal-state-map (kbd "e") 'sanityinc/eval-last-sexp-or-region)
 (define-key evil-normal-state-map (kbd "P") 'move-dup-duplicate-down)
+
 (define-key evil-motion-state-map (kbd "t") 'evil-jump-item)
 (define-key evil-motion-state-map (kbd "C-;") 'evil-end-of-line)
+(define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 
+(define-key evil-insert-state-map (kbd "C-k") 'backward-delete-char)
+(define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
+(define-key evil-insert-state-map (kbd "C-j") 'avy-goto-word-1)
 
 (define-key minibuffer-local-map (kbd "C-;") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-map (kbd "C-k") 'backward-delete-char)
-;; set local leader
+(define-key minibuffer-local-map (kbd "C-SPC") 'vertico-exit)
+
+;;; set local leader
 (provide 'init-keybinding)

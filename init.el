@@ -57,7 +57,7 @@
 (require 'init-isearch)
 (require 'init-grep)
 (require 'init-uniquify)
-(require 'init-ibuffer)
+;;;(require 'init-ibuffer)
 (require 'init-scratch)
 (require 'init-corfu) ;; completion
 (require 'init-recentf)
@@ -100,8 +100,6 @@
 
 (require 'init-folding)
 (require 'init-dash)
-
-(require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
 (require-package 'sudo-edit)
