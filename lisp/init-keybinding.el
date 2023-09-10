@@ -1,9 +1,20 @@
+(meow-define-keys
+    ;; state
+    'normal
+  ;; bind to a command
+  '("a" . meow-append)
+  '("d" . xref-find-definitions)
+  ;; bind to a keymap
+  (cons "h" help-map)
+  ;; bind to a keybinding
+  '("x" . "C-x C-x"))
+
 (require 'general)
 (setq which-key-prefix-prefix "+" )
 (general-create-definer thief-leader-def
                         :prefix "SPC"
                         :keymaps 'normal
-                        "d" 'xref-find-definitions
+
                         ";" 'execute-extended-command
                         "P" 'edit-config-file
                         "x" 'jump-scratch
@@ -14,6 +25,7 @@
                         "g" 'goto-line
                         "t" 'switch-between-cpp-h
                         "o" 'switch-window
+                        "r" 'rg
                         )
 (thief-leader-def
  :keymaps 'normal
@@ -25,12 +37,12 @@
  "jj" 'consult-project-buffer
  )
 (thief-leader-def
- :keymaps 'normal
- "f" '(:ignore t :wk "file")
- "fr" 'consult-recent-file
- "fd" 'delete-window
- "fk" 'kill-current-buffer
- )
+  :keymaps 'normal
+  "f" '(:ignore t :wk "file")
+  "fr" 'consult-recent-file
+  "fd" 'delete-window
+  "fk" 'kill-current-buffer
+  )
 (thief-leader-def
  :keymaps 'normal
  "h" '(:ignore t :wk "help")

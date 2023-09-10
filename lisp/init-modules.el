@@ -21,15 +21,13 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 
-;; Bootstrap config
-(setq custom-file (locate-user-emacs-file "custom.el"))
-
 ;; set some path for emacs.d clean
 (setq eshell-directory-name (concat user-emacs-directory  ".cache/eshell/"))
 (setq auto-save-list-file-prefix (concat user-emacs-directory  ".cache/auto-save-list/.saves-"))
 (setq transient-levels-file (concat user-emacs-directory  ".cache/transient/levels.el"))
 (setq transient-values-file (concat user-emacs-directory  ".cache/transient/values.el"))
 (setq transient-history-file (concat user-emacs-directory  ".cache/transient/history.el"))
+;; Bootstrap config
 (setq custom-file (expand-file-name ".cache/custom.el" user-emacs-directory))
 
 (with-temp-message ""
@@ -59,7 +57,8 @@
   (require 'init-editing-utils)
   (require 'init-whitespace)
   (require 'init-projectile)
-  (require 'init-evil)
+  ;;;(require 'init-evil)
+  (require 'init-meow)
   (require 'init-compile)
   (require 'init-org)
  ;;;(require 'init-python)
@@ -93,7 +92,7 @@
 
   ;; Locales (setting them earlier in this file doesn't work in X)
   (require 'init-locales)
-  (require 'init-keybinding)
+  ;;;(require 'init-keybinding)
   ;; Allow users to provide an optional "init-local" containing personal settings
   (require 'init-local nil t)
   (flythief/setup-fonts)

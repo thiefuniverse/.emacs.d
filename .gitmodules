@@ -19,3 +19,6 @@
 [submodule "extensions/vertico"]
 	path = extensions/vertico
 	url = https://github.com/minad/vertico
+[submodule "extensions/meow"]
+	path = extensions/meow
+	url = https://github.com/meow-edit/meow
