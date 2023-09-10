@@ -40,6 +40,7 @@
 (define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
 (setq org-directory "~/org/")
 
+(setq org-clock-persist-file (expand-file-name ".cache/org-clock-save.el" user-emacs-directory))
 ;; Various preferences
 (setq org-log-done t
       org-edit-timestamp-down-means-later t

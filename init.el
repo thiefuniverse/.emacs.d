@@ -1,3 +1,5 @@
+;;; now, I manage emacs confg without package management.
+
 (require 'cl-lib)
 
 (tool-bar-mode -1)                      ;禁用工具栏
@@ -34,7 +36,5 @@
         ;; 继续递归搜索子目录
         (add-subdirs-to-load-path subdir-path)))))
 
-(add-subdirs-to-load-path (expand-file-name "extensions/" user-emacs-directory))
-(add-subdirs-to-load-path (expand-file-name "lisp/" user-emacs-directory))
-
-(load-file (expand-file-name "init_modules.el" user-emacs-directory))
+(add-subdirs-to-load-path user-emacs-directory)
+(require 'init-modules)

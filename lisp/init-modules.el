@@ -1,4 +1,4 @@
-;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-modules.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -23,6 +23,14 @@
 
 ;; Bootstrap config
 (setq custom-file (locate-user-emacs-file "custom.el"))
+
+;; set some path for emacs.d clean
+(setq eshell-directory-name (concat user-emacs-directory  ".cache/eshell/"))
+(setq auto-save-list-file-prefix (concat user-emacs-directory  ".cache/auto-save-list/.saves-"))
+(setq transient-levels-file (concat user-emacs-directory  ".cache/transient/levels.el"))
+(setq transient-values-file (concat user-emacs-directory  ".cache/transient/values.el"))
+(setq transient-history-file (concat user-emacs-directory  ".cache/transient/history.el"))
+(setq custom-file (expand-file-name ".cache/custom.el" user-emacs-directory))
 
 (with-temp-message ""
   (require 'init-utils)
@@ -91,10 +99,11 @@
   (flythief/setup-fonts)
   (global-visual-line-mode 1)
   )
-(provide 'init)
+
+(provide 'init-modules)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init.el ends here
+;;; init-modules.el ends here

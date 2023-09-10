@@ -32,6 +32,7 @@
 
 (setq-default history-length 1000)
 (add-hook 'after-init-hook 'savehist-mode)
+(setq savehist-file (expand-file-name ".cache/history" user-emacs-directory))
 
 (require 'session)
 

@@ -4,7 +4,10 @@
 
 (when(require 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
-
+  (setq projectile-cache-file (expand-file-name ".cache/projectile.cache"
+                                                user-emacs-directory)
+        projectile-known-projects-file (expand-file-name ".cache/projectile-known-projects.eld"
+                                                         user-emacs-directory))
   ;; Shorter modeline
   (setq-default projectile-mode-line-prefix " Proj")
 
@@ -14,7 +17,7 @@
   (with-eval-after-load 'projectile
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
- (require 'ibuffer-projectile))
+  (require 'ibuffer-projectile))
 
 
 (provide 'init-projectile)
