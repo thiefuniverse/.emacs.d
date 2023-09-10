@@ -39,6 +39,11 @@
   (add-to-list 'default-frame-alist no-border)
   (add-to-list 'initial-frame-alist no-border))
 
+
+(setq initial-frame-alist
+      '((width . 80)
+        (height . 40)))
+
 (defun sanityinc/adjust-opacity (frame incr)
   "Adjust the background opacity of FRAME by increment INCR."
   (unless (display-graphic-p frame)
@@ -63,8 +68,8 @@
 
 
 (when *is-a-mac*
-  (when (maybe-require-package 'ns-auto-titlebar)
-    (ns-auto-titlebar-mode)))
+  (when require 'ns-auto-titlebar)
+    (ns-auto-titlebar-mode))
 
 
 (setq frame-title-format
@@ -81,12 +86,8 @@
 
 ;; Change global font size easily
 
-(require-package 'default-text-scale)
+(require 'default-text-scale)
 (add-hook 'after-init-hook 'default-text-scale-mode)
-
-
-
-(require-package 'disable-mouse)
 
 
 (provide 'init-gui-frames)

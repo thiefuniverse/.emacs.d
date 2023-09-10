@@ -3,10 +3,10 @@
 ;;; Code:
 
 
-(when (maybe-require-package 'vertico)
+(when(require 'vertico)
   (add-hook 'after-init-hook 'vertico-mode)
 
-  (require-package 'orderless)
+ (require 'orderless)
   (with-eval-after-load 'vertico
     (require 'orderless))
 
@@ -14,12 +14,12 @@
     (setq-local completion-styles '(substring orderless)))
   (add-hook 'minibuffer-setup-hook 'sanityinc/use-orderless-in-minibuffer)
 
-  (when (maybe-require-package 'embark)
-    (with-eval-after-load 'vertico
-      (define-key vertico-map (kbd "C-c C-o") 'embark-export)
-      (define-key vertico-map (kbd "C-c C-c") 'embark-act)))
-
-  (when (maybe-require-package 'consult)
+  ;; (when(require 'embark)
+  ;;   (with-eval-after-load 'vertico
+  ;;     (define-key vertico-map (kbd "C-c C-o") 'embark-export)
+  ;;     (define-key vertico-map (kbd "C-c C-c") 'embark-act)))
+  (require 'consult-xref)
+  (when(require 'consult)
     (defmacro sanityinc/no-consult-preview (&rest cmds)
       `(with-eval-after-load 'consult
          (consult-customize ,@cmds :preview-key 'any)))
@@ -30,10 +30,10 @@
      consult-bookmark consult-recent-file consult-xref
      consult--source-recent-file consult--source-project-recent-file consult--source-bookmark)
 
-    (when (maybe-require-package 'projectile)
+    (when(require 'projectile)
       (setq-default consult-project-root-function 'projectile-project-root))
 
-    (when (and (executable-find "rg") (maybe-require-package 'affe))
+    (when (and (executable-find "rg")(require 'affe))
       (defun sanityinc/affe-grep-at-point (&optional dir initial)
         (interactive (list prefix-arg (when-let ((s (symbol-at-point)))
                                         (symbol-name s))))
@@ -49,14 +49,14 @@
 
 
 
-    (when (maybe-require-package 'embark-consult)
-      (with-eval-after-load 'embark
-        (require 'embark-consult)
-        (add-hook 'embark-collect-mode-hook 'embark-consult-preview-minor-mode)))
+    ;; (when(require 'embark-consult)
+    ;;   (with-eval-after-load 'embark
+    ;;     (require 'embark-consult)
+    ;;     (add-hook 'embark-collect-mode-hook 'embark-consult-preview-minor-mode)))
 
-    (maybe-require-package 'consult-flycheck)))
+   (require 'consult-flycheck)))
 
-(when (maybe-require-package 'marginalia)
+(when(require 'marginalia)
   (add-hook 'after-init-hook 'marginalia-mode))
 
 

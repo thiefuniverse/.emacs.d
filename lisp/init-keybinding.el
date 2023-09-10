@@ -1,5 +1,6 @@
 (use-package general
   :defer t
+  :load-path "extensions/general"
   :config
   (setq which-key-prefix-prefix "+" )
   (general-create-definer thief-leader-def
@@ -24,7 +25,6 @@
     "jw" 'avy-goto-word-1
     "jf" 'switch-window
     "jk" 'consult-buffer
-    "jl" 'consult-imenu
     "jj" 'consult-project-buffer
     )
   (thief-leader-def
@@ -70,7 +70,7 @@
   )
 
 ;;; modify evil mode actions
-(define-key evil-normal-state-map (kbd "e") 'sanityinc/eval-last-sexp-or-region)
+(define-key evil-normal-state-map (kbd "e") 'eval-last-sexp)
 (define-key evil-normal-state-map (kbd "P") 'move-dup-duplicate-down)
 
 (define-key evil-motion-state-map (kbd "t") 'evil-jump-item)

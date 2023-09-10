@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'projectile)
+(when(require 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
 
   ;; Shorter modeline
@@ -14,7 +14,7 @@
   (with-eval-after-load 'projectile
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
-  (maybe-require-package 'ibuffer-projectile))
+ (require 'ibuffer-projectile))
 
 
 (provide 'init-projectile)

@@ -13,7 +13,7 @@
 
 
 ;; Make "C-x o" prompt for a target window when there are more than 2
-(require-package 'switch-window)
+(require 'switch-window)
 (setq-default switch-window-shortcut-style 'qwerty)
 (setq-default switch-window-timeout nil)
 (global-set-key (kbd "C-x o") 'switch-window)
@@ -98,15 +98,12 @@ Call a second time to restore the original window configuration."
              (buffer-name))))
 
 (global-set-key (kbd "C-c <down>") 'sanityinc/toggle-current-window-dedication)
-
-
 
 
 (unless (memq window-system '(nt w32))
-  (require-package 'windswap)
+  (require 'windswap)
   (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control))
   (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
-
 
 (provide 'init-windows)
 ;;; init-windows.el ends here

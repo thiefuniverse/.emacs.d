@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'paredit)
+(require 'paredit)
 
 (defun sanityinc/maybe-map-paredit-newline ()
   (unless (or (memq major-mode '(inferior-emacs-lisp-mode))

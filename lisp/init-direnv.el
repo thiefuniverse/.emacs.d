@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (maybe-require-package 'envrc)
+(when(require 'envrc)
   (defun sanityinc/maybe-enable-envrc-global-mode ()
     "Enable `envrc-global-mode' if `direnv' is installed."
     (when (executable-find "direnv")

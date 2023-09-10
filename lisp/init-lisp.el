@@ -4,7 +4,7 @@
 
 (setq-default debugger-bury-or-kill 'kill)
 
-(require-package 'elisp-slime-nav)
+(require 'elisp-slime-nav)
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
@@ -40,10 +40,11 @@
 (global-set-key [remap eval-expression] 'pp-eval-expression)
 
 (with-eval-after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'sanityinc/eval-last-sexp-or-region)
+  ;;;(define-key emacs-lisp-mode-map (kbd "C-x C-e") 'sanityinc/eval-last-sexp-or-region)
+  (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'eval-last-sexp)
   (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'pp-eval-expression))
 
-(when (maybe-require-package 'ipretty)
+(when(require 'ipretty)
   (add-hook 'after-init-hook 'ipretty-mode))
 
 
@@ -127,7 +128,7 @@ there is no current file, eval the current buffer."
 
 ;; Automatic byte compilation
 
-(when (maybe-require-package 'auto-compile)
+(when(require 'auto-compile)
   (setq auto-compile-delete-stray-dest nil)
   (add-hook 'after-init-hook 'auto-compile-on-save-mode)
   (add-hook 'after-init-hook 'auto-compile-on-load-mode))
@@ -136,11 +137,6 @@ there is no current file, eval the current buffer."
 ;; Load .el if newer than corresponding .elc
 
 (setq load-prefer-newer t)
-
-
-
-(require-package 'immortal-scratch)
-(add-hook 'after-init-hook 'immortal-scratch-mode)
 
 
 ;;; Support byte-compilation in a sub-process, as
@@ -172,7 +168,7 @@ there is no current file, eval the current buffer."
   "Hook run in all Lisp modes.")
 
 
-(when (maybe-require-package 'aggressive-indent)
+(when(require 'aggressive-indent)
   (add-to-list 'sanityinc/lispy-modes-hook 'aggressive-indent-mode))
 
 (defun sanityinc/lisp-setup ()
@@ -242,7 +238,7 @@ there is no current file, eval the current buffer."
 
 
 
-(require-package 'macrostep)
+(require 'macrostep)
 
 (with-eval-after-load 'lisp-mode
   (define-key emacs-lisp-mode-map (kbd "C-c x") 'macrostep-expand))
@@ -255,7 +251,7 @@ there is no current file, eval the current buffer."
 
 
 ;; Extras for theme editing
-(when (maybe-require-package 'rainbow-mode)
+(when(require 'rainbow-mode)
   (defun sanityinc/enable-rainbow-mode-if-theme ()
     (when (and (buffer-file-name) (string-match-p "\\(color-theme-\\|-theme\\.el\\)" (buffer-file-name)))
       (rainbow-mode)))
@@ -266,7 +262,7 @@ there is no current file, eval the current buffer."
 
 
 
-(when (maybe-require-package 'highlight-quoted)
+(when(require 'highlight-quoted)
   (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
 
 
@@ -277,14 +273,14 @@ there is no current file, eval the current buffer."
   (define-key ert-results-mode-map (kbd "g") 'ert-results-rerun-all-tests))
 
 
-(maybe-require-package 'cl-libify)
+(require 'cl-libify)
 
 
-(maybe-require-package 'flycheck-relint)
+(require 'flycheck-relint)
 
 
 
-(maybe-require-package 'cask-mode)
+(require 'cask-mode)
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

@@ -23,9 +23,9 @@
 ;;; Code:
 
 (when *is-a-mac*
-  (maybe-require-package 'grab-mac-link))
+ (require 'grab-mac-link))
 
-(maybe-require-package 'org-cliplink)
+;;;require 'org-cliplink)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
@@ -62,7 +62,7 @@
 
 
 
-(maybe-require-package 'writeroom-mode)
+(require 'writeroom-mode)
 
 (define-minor-mode prose-mode
   "Set up a buffer for prose editing.
@@ -326,7 +326,7 @@ typical word processor."
 
 
 
-(require-package 'org-pomodoro)
+(require 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)
 (with-eval-after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
@@ -385,7 +385,7 @@ typical word processor."
       (sqlite . t)))))
 
 (use-package org-bullets
-  :ensure t
+  :ensure nil
   :defer t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
@@ -426,14 +426,6 @@ typical word processor."
 ;;                                #'switch-to-buffer-other-window
 ;;                              #'pop-to-buffer-same-window)
 ;;                       force))
-
-(use-package auto-package-update
-  :ensure t
-  :defer t
-  :config
-  (setq auto-package-update-delete-old-versions t
-        auto-package-update-interval 4)
-  (auto-package-update-maybe))
 
 (provide 'init-org)
 ;;; init-org.el ends here

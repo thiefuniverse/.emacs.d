@@ -47,6 +47,7 @@
                                         :font font
                                         :height (cond (sys/macp 160)
                                                       (sys/win32p 180)
+                                                      (sys/linuxp 180)
                                                       (t 100))))
 
     ;; Specify font for all unicode characters

@@ -70,7 +70,7 @@
   "read current environment variables, updated with the system"
   (seq-map (lambda (var) (win-reg-read win-environment-registry var)) vars))
 
-(require-package 'exec-path-from-shell)
+(require 'exec-path-from-shell)
 ;;; origin version can't handle windows path env, add some special proceses for windows
 (defun exec-path-from-shell-printf-win (args)
   (win-environment-read args))

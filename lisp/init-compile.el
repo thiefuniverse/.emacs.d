@@ -4,7 +4,7 @@
 
 (setq-default compilation-scroll-output t)
 
-(require-package 'alert)
+(require 'alert)
 
 ;; Customize `alert-default-style' to get messages after compilation
 

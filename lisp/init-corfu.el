@@ -1,3 +1,5 @@
+(add-to-list 'load-path (expand-file-name "lisp/lsp-bridge" user-emacs-directory))
+
 (use-package corfu
   ;; Optional customizations
   :custom
@@ -88,6 +90,7 @@
   (yas-global-mode 1))
 (use-package posframe)
 (use-package all-the-icons)
+
 ;; (require 'lsp-bridge)
 ;; (require 'corfu-info)
 ;; (require 'lsp-bridge-icon)

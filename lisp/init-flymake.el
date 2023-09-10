@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(maybe-require-package 'flymake "1.2.1")
+(require 'flymake "1.2.1")
 
 ;; Use flycheck checkers with flymake, to extend its coverage
-(when (maybe-require-package 'flymake-flycheck)
+(when(require 'flymake-flycheck)
   ;; Disable flycheck checkers for which we have flymake equivalents
   (with-eval-after-load 'flycheck
     (setq-default flycheck-disabled-checkers
@@ -27,7 +27,7 @@
   (define-key flymake-mode-map (kbd "C-c ! p") 'flymake-goto-prev-error)
   (define-key flymake-mode-map (kbd "C-c ! c") 'flymake-start))
 
-(when (maybe-require-package 'package-lint-flymake)
+(when(require 'package-lint-flymake)
   (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
 
 (unless (version< emacs-version "28.1")

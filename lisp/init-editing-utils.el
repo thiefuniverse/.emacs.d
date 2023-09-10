@@ -2,13 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'unfill)
+(require 'unfill)
 
 (when (fboundp 'electric-pair-mode)
   (add-hook 'after-init-hook 'electric-pair-mode))
 (add-hook 'after-init-hook 'electric-indent-mode)
 
-(maybe-require-package 'list-unicode-display)
+(require 'list-unicode-display)
 
 
 ;;; Some basic preferences
@@ -50,24 +50,24 @@
 (when (fboundp 'so-long-enable)
   (add-hook 'after-init-hook 'so-long-enable))
 
-(require-package 'vlf)
+;; (require 'vlf)
 
-(defun ffap-vlf ()
-  "Find file at point with VLF."
-  (interactive)
-  (let ((file (ffap-file-at-point)))
-    (unless (file-exists-p file)
-      (error "File does not exist: %s" file))
-    (vlf file)))
+;; (defun ffap-vlf ()
+;;   "Find file at point with VLF."
+;;   (interactive)
+;;   (let ((file (ffap-file-at-point)))
+;;     (unless (file-exists-p file)
+;;       (error "File does not exist: %s" file))
+;;     (vlf file)))
 
-
+;; 
 ;;; A simple visible bell which works in all terminal types
-(require-package 'mode-line-bell)
+(require 'mode-line-bell)
 (add-hook 'after-init-hook 'mode-line-bell-mode)
 
 
 
-(when (maybe-require-package 'beacon)
+(when (require 'beacon)
   (setq-default beacon-lighter "")
   (setq-default beacon-size 20)
   (add-hook 'after-init-hook 'beacon-mode))
@@ -105,11 +105,11 @@
 
 
 
-(when (require-package 'rainbow-delimiters)
+(when (require 'rainbow-delimiters)
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 
-(when (maybe-require-package 'symbol-overlay)
+(when (require 'symbol-overlay)
   (dolist (hook '(prog-mode-hook html-mode-hook yaml-mode-hook conf-mode-hook))
     (add-hook hook 'symbol-overlay-mode))
   (with-eval-after-load 'symbol-overlay
@@ -125,7 +125,7 @@
 
 
 
-(require-package 'browse-kill-ring)
+(require 'browse-kill-ring)
 (setq browse-kill-ring-separator "\f")
 (global-set-key (kbd "M-Y") 'browse-kill-ring)
 (with-eval-after-load 'browse-kill-ring
@@ -155,15 +155,15 @@
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(when (maybe-require-package 'avy)
+(when (require 'avy)
   (global-set-key (kbd "C-;") 'avy-goto-char-timer))
 
-(require-package 'multiple-cursors)
-;; multiple-cursors
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;;;(require 'multiple-cursors)
+;;;;; multiple-cursors
+;;;(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;;;(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;;;(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+;;;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Train myself to use M-f and M-b instead
 (global-unset-key [M-left])
@@ -182,7 +182,7 @@
 
 ;;; Page break lines
 
-(when (maybe-require-package 'page-break-lines)
+(when (require 'page-break-lines)
   (add-hook 'after-init-hook 'global-page-break-lines-mode)
   (with-eval-after-load 'page-break-lines
     (diminish 'page-break-lines-mode)))
@@ -193,7 +193,7 @@
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 
-(require-package 'move-dup)
+(require 'move-dup)
 (global-set-key [M-up] 'move-dup-move-lines-up)
 (global-set-key [M-down] 'move-dup-move-lines-down)
 (global-set-key [M-S-up] 'move-dup-move-lines-up)
@@ -219,7 +219,7 @@
 
 
 ;;; Cut/copy the current line if no region is active
-(require-package 'whole-line-or-region)
+(require 'whole-line-or-region)
 (add-hook 'after-init-hook 'whole-line-or-region-global-mode)
 (with-eval-after-load 'whole-line-or-region
   (diminish 'whole-line-or-region-local-mode))
@@ -276,11 +276,11 @@ With arg N, insert N newlines."
 
 
 
-(require-package 'highlight-escape-sequences)
+(require 'highlight-escape-sequences)
 (add-hook 'after-init-hook 'hes-mode)
 
 
-(require-package 'which-key)
+(require 'which-key)
 (add-hook 'after-init-hook 'which-key-mode)
 (setq-default which-key-idle-delay 1)
 (with-eval-after-load 'which-key

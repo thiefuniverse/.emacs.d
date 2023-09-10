@@ -1,0 +1,21 @@
+[submodule "extensions/compat"]
+	path = extensions/compat
+	url = https://github.com/emacs-compat/compat
+[submodule "extensions/consult"]
+	path = extensions/consult
+	url = https://github.com/minad/consult.git
+[submodule "extensions/diff-hl"]
+	path = extensions/diff-hl
+	url = https://github.com/dgutov/diff-hl
+[submodule "extensions/doom-themes"]
+	path = extensions/doom-themes
+	url = https://github.com/doomemacs/themes
+[submodule "extensions/evil"]
+	path = extensions/evil
+	url = https://github.com/emacs-evil/evil
+[submodule "extensions/rg"]
+	path = extensions/rg
+	url = https://github.com/dajva/rg.el
+[submodule "extensions/vertico"]
+	path = extensions/vertico
+	url = https://github.com/minad/vertico
