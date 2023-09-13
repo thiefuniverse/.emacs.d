@@ -5,9 +5,8 @@
   '("a" . meow-append)
   '("d" . xref-find-definitions)
   ;; bind to a keymap
-  (cons "h" help-map)
-  ;; bind to a keybinding
-  '("x" . "C-x C-x"))
+                                        ;
+  )
 
 (require 'general)
 (setq which-key-prefix-prefix "+" )
