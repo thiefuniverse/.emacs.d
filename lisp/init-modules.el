@@ -54,6 +54,7 @@
   (require 'init-minibuffer)
   (require 'init-windows)
   (require 'init-sessions)
+
   (require 'init-editing-utils)
   (require 'init-whitespace)
   (require 'init-projectile)
@@ -92,7 +93,7 @@
 
   ;; Locales (setting them earlier in this file doesn't work in X)
   (require 'init-locales)
-  ;;;(require 'init-keybinding)
+  (require 'init-keybinding)
   ;; Allow users to provide an optional "init-local" containing personal settings
   (require 'init-local nil t)
   (flythief/setup-fonts)

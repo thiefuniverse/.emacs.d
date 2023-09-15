@@ -23,12 +23,13 @@
 ;;; Code:
 
 (when *is-a-mac*
- (require 'grab-mac-link))
+  (require 'grab-mac-link))
 
 ;;;require 'org-cliplink)
 
-(define-key global-map (kbd "C-c l") 'org-store-link)
-(define-key global-map (kbd "C-c a") 'org-agenda)
+
+;;;(define-key global-map (kbd "C-c l") 'org-store-link)
+;;;(define-key global-map (kbd "C-c a") 'org-agenda)
 
 (defvar sanityinc/org-global-prefix-map (make-sparse-keymap)
   "A keymap for handy global access to org helpers, particularly clocking.")

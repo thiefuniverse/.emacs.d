@@ -1,92 +1,51 @@
+(defvar jump-quick-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap "l" 'consult-line)
+    (define-key keymap "w" 'avy-goto-word-1)
+    (define-key keymap "f" 'switch-window)
+    (define-key keymap "k" 'consult-buffer)
+    (define-key keymap "j" 'consult-project-buffer)
+    keymap))
+
+(defalias 'jump jump-quick-keymap)
+(global-set-key (kbd "C-c j") 'jump)
+
+(global-set-key (kbd "C-c ;") 'execute-extended-command)
+(global-set-key (kbd "C-c P") 'edit-config-file)
+(global-set-key (kbd "C-c x") 'jump-scratch)
+(global-set-key (kbd "C-c k") 'delete-other-windows)
+(global-set-key (kbd "C-c ,") 'pop-tag-mark)
+(global-set-key (kbd "C-c -") 'split-window-below)
+(global-set-key (kbd "C-c \\") 'split-window-right)
+(global-set-key (kbd "C-c g") 'goto-line)
+(global-set-key (kbd "C-c t") 'switch-between-cpp-h)
+(global-set-key (kbd "C-c o") 'switch-window)
+(global-set-key (kbd "C-c r") 'rg)
+(global-set-key (kbd "C-c e") 'eval-last-sexp)
+
+(defvar file-quick-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap "r" 'consult-recent-file)
+    (define-key keymap "d" 'delete-window)
+    (define-key keymap "k" 'kill-current-buffer)
+    keymap))
+(defalias 'file file-quick-keymap)
+(global-set-key (kbd "C-c f") 'file)
+
+(defvar describe-quick-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap "k" 'describe-key)
+    (define-key keymap "f" 'describe-function)
+    (define-key keymap "v" 'describe-variable)
+    keymap))
+(defalias 'describe describe-quick-keymap)
+(global-set-key (kbd "C-c h") 'describe)
+
 (meow-define-keys
-    ;; state
-    'normal
-  ;; bind to a command
-  '("a" . meow-append)
-  '("d" . xref-find-definitions)
-  ;; bind to a keymap
-                                        ;
+    'insert
+  '("C-k" . backward-delete-char)
+  '("C-j" . avy-goto-word-1)
   )
-
-(require 'general)
-(setq which-key-prefix-prefix "+" )
-(general-create-definer thief-leader-def
-                        :prefix "SPC"
-                        :keymaps 'normal
-
-                        ";" 'execute-extended-command
-                        "P" 'edit-config-file
-                        "x" 'jump-scratch
-                        "k" 'delete-other-windows
-                        "," 'pop-tag-mark
-                        "-" 'split-window-below
-                        "\\" 'split-window-right
-                        "g" 'goto-line
-                        "t" 'switch-between-cpp-h
-                        "o" 'switch-window
-                        "r" 'rg
-                        )
-(thief-leader-def
- :keymaps 'normal
- "j" '(:ignore t :wk "jump")
- "jl" 'consult-line
- "jw" 'avy-goto-word-1
- "jf" 'switch-window
- "jk" 'consult-buffer
- "jj" 'consult-project-buffer
- )
-(thief-leader-def
-  :keymaps 'normal
-  "f" '(:ignore t :wk "file")
-  "fr" 'consult-recent-file
-  "fd" 'delete-window
-  "fk" 'kill-current-buffer
-  )
-(thief-leader-def
- :keymaps 'normal
- "h" '(:ignore t :wk "help")
- "hk" 'describe-key
- "hf" 'describe-function
- "hv" 'describe-variable
- )
-(thief-leader-def
- :keymaps 'normal
- "o" '(:ignore t :wk "org")
- )
-(thief-leader-def
- :keymaps 'normal
- "b" '(:ignore t :wk "buffer")
- )
-(thief-leader-def
- :keymaps 'normal
- "p" '(:ignore t :wk "project")
- "px" 'jump-project-scratch
- "pf" 'projectile-find-file
- "pb" 'consult-project-buffer
- "ps" 'project-shell
- )
-(thief-leader-def
- :keymaps 'normal
- "c" '(:ignore t :wk "consult")
- "cy" 'consult-yank-from-kill-ring
- )
-(thief-leader-def
- :keymaps 'normal
- "s" '(:ignore t :wk "save")
- "sd" 'save-buffer
- )
-
-;;; modify evil mode actions
-(define-key evil-normal-state-map (kbd "e") 'eval-last-sexp)
-(define-key evil-normal-state-map (kbd "P") 'move-dup-duplicate-down)
-
-(define-key evil-motion-state-map (kbd "t") 'evil-jump-item)
-(define-key evil-motion-state-map (kbd "C-;") 'evil-end-of-line)
-(define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
-
-(define-key evil-insert-state-map (kbd "C-k") 'backward-delete-char)
-(define-key evil-insert-state-map (kbd "C-d") 'delete-forward-char)
-(define-key evil-insert-state-map (kbd "C-j") 'avy-goto-word-1)
 
 (define-key minibuffer-local-map (kbd "C-;") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-map (kbd "C-k") 'backward-delete-char)

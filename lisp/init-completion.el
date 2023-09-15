@@ -1,9 +1,5 @@
-(add-to-list 'load-path (expand-file-name "lisp/lsp-bridge" user-emacs-directory))
-
-;;;(use-package yasnippet-snippets)
-(use-package yasnippet
-  :config
-  (yas-global-mode 1))
+(require 'yasnippet)
+(yas-global-mode 1)
 ;;;(use-package posframe)
 ;;;(use-package all-the-icons)
 (require 'lsp-bridge)
