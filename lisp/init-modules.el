@@ -19,7 +19,6 @@
   (setq gc-cons-threshold init-gc-cons-threshold)
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
-
 
 ;; set some path for emacs.d clean
 (setq eshell-directory-name (concat user-emacs-directory  ".cache/eshell/"))
@@ -48,7 +47,7 @@
   (require 'init-isearch)
   (require 'init-grep)
   (require 'init-scratch)
- ;;;(require 'init-completion)
+  (require 'init-completion)
  ;;;(require 'init-corfu) ;; completion
   (require 'init-recentf)
   (require 'init-minibuffer)
@@ -58,7 +57,6 @@
   (require 'init-editing-utils)
   (require 'init-whitespace)
   (require 'init-projectile)
-  ;;;(require 'init-evil)
   (require 'init-meow)
   (require 'init-compile)
   (require 'init-org)

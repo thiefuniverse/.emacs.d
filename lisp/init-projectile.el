@@ -2,6 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'dirvish)
+(require 'dirvish-side)
+(require 'dirvish-icons)
+(require 'dirvish-ls)
+(require 'dirvish-fd)
+(require 'dirvish-history)
+(dirvish-override-dired-mode)
+(dirvish-side-follow-mode)
+
 (when(require 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
   (setq projectile-cache-file (expand-file-name ".cache/projectile.cache"

@@ -22,3 +22,15 @@
 [submodule "extensions/meow"]
 	path = extensions/meow
 	url = https://github.com/meow-edit/meow
+[submodule "extensions/yasnippet-snippets"]
+	path = extensions/yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "extensions/lsp-bridge"]
+	path = extensions/lsp-bridge
+	url = https://github.com/manateelazycat/lsp-bridge.git
+[submodule "extensions/dirvish"]
+	path = extensions/dirvish
+	url = https://github.com/alexluigit/dirvish.git
+[submodule "extensions/all-the-icons"]
+	path = extensions/all-the-icons
+	url = https://github.com/domtronn/all-the-icons.el.git

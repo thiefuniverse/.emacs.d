@@ -12,16 +12,20 @@
 
 (global-set-key (kbd "C-c ;") 'execute-extended-command)
 (global-set-key (kbd "C-c P") 'edit-config-file)
-(global-set-key (kbd "C-c x") 'jump-scratch)
+(global-set-key (kbd "C-c `") 'jump-scratch)
 (global-set-key (kbd "C-c k") 'delete-other-windows)
-(global-set-key (kbd "C-c ,") 'pop-tag-mark)
 (global-set-key (kbd "C-c -") 'split-window-below)
 (global-set-key (kbd "C-c \\") 'split-window-right)
-(global-set-key (kbd "C-c g") 'goto-line)
-(global-set-key (kbd "C-c t") 'switch-between-cpp-h)
+(global-set-key (kbd "C-c t") 'ff-find-other-file)
 (global-set-key (kbd "C-c o") 'switch-window)
 (global-set-key (kbd "C-c r") 'rg)
 (global-set-key (kbd "C-c e") 'eval-last-sexp)
+
+
+(global-set-key (kbd "C-c d") 'lsp-bridge-find-def)
+(global-set-key (kbd "C-c ,") 'lsp-bridge-find-def-return)
+
+
 
 (defvar file-quick-keymap
   (let ((keymap (make-keymap)))
@@ -32,19 +36,25 @@
 (defalias 'file file-quick-keymap)
 (global-set-key (kbd "C-c f") 'file)
 
+(global-unset-key (kbd "C-c C-f"))
 (defvar describe-quick-keymap
   (let ((keymap (make-keymap)))
     (define-key keymap "k" 'describe-key)
     (define-key keymap "f" 'describe-function)
     (define-key keymap "v" 'describe-variable)
     keymap))
-(defalias 'describe describe-quick-keymap)
-(global-set-key (kbd "C-c h") 'describe)
+(defalias 'des describe-quick-keymap)
+(global-set-key (kbd "C-c h") 'des)
 
 (meow-define-keys
     'insert
   '("C-k" . backward-delete-char)
   '("C-j" . avy-goto-word-1)
+  )
+
+(meow-define-keys
+    'normal
+  '("P" . move-dup-duplicate-down)
   )
 
 (define-key minibuffer-local-map (kbd "C-;") 'minibuffer-keyboard-quit)
