@@ -8,6 +8,7 @@
 (require 'dirvish-ls)
 (require 'dirvish-fd)
 (require 'dirvish-history)
+(require 'dirvish-subtree)
 (dirvish-override-dired-mode)
 (dirvish-side-follow-mode)
 

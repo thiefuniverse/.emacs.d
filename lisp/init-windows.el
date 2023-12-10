@@ -105,5 +105,24 @@ Call a second time to restore the original window configuration."
   (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control))
   (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
 
+;;; control window pop behavior
+(require 'shackle)
+(setq shackle-rules
+      ;; CONDITION(:regexp)            :select     :inhibit-window-quit   :size+:align|:other     :same|:popup
+      '((compilation-mode              :select nil                                               )
+        ("*undo-tree*"                                                    :size 0.25 :align right)
+        ("*eshell*"                    :select t                          :other t               )
+        ("*Shell Command Output*"      :select nil                                               )
+        ("\\*Async Shell.*\\*" :regexp t :ignore t                                                 )
+        (occur-mode                    :select nil                                   :align t    )
+        ("*Help*"                     :select t   :inhibit-window-quit nil)
+        ("*Completions*"                                                  :size 0.3  :align t    )
+        ("*Messages*"                  :select nil :inhibit-window-quit t :other t               )
+        ("*Calendar*"                  :select t                          :size 0.3  :align below)
+        ("*info*"                      :select t   :inhibit-window-quit t                         :same t)
+        ))
+(setq shackle-select-reused-windows t)
+(shackle-mode)
+
 (provide 'init-windows)
 ;;; init-windows.el ends here

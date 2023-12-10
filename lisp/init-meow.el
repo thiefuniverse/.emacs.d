@@ -137,5 +137,7 @@
 (define-key meow-insert-state-keymap (substring meow-two-char-escape-sequence 0 1)
             #'meow-two-char-exit-insert-state)
 
+;;; use system clipboard
+(setq meow-use-clipboard t)
 
 (provide 'init-meow)
