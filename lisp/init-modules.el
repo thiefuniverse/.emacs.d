@@ -33,7 +33,6 @@
   (require 'init-utils)
   (require 'init-const)
   (require 'init-exec-path) ;; Set up $PATH
-  
   ;; Allow users to provide an optional "init-preload-local.el"
   (require 'init-preload-local nil t)
   ;; Load configs for specific features and modes
@@ -68,6 +67,7 @@
     (require 'init-spelling))
   (require 'init-folding)
   (require 'init-dash)
+  (require 'init-workspaces)
 
   ;; Extra packages which don't require any configuration
   (when(require 'uptimes)

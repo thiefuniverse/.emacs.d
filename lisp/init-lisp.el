@@ -245,8 +245,7 @@ there is no current file, eval the current buffer."
 
 
 
-;; A quick way to jump to the definition of a function given its key binding
-(global-set-key (kbd "C-h K") 'find-function-on-key)
+
 
 
 

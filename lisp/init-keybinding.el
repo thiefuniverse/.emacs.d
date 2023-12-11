@@ -48,6 +48,23 @@
 (defalias 'search-rg search-rg-quick-keymap)
 (global-set-key (kbd "C-c r") 'search-rg)
 
+(defvar workspace-quick-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap "n" '+workspace/new)
+    (define-key keymap "d" '+workspace/delete)
+    (define-key keymap "w" '+workspace/switch-to)
+    (define-key keymap "r" '+workspace/rename)
+    (define-key keymap "c" '+workspace/cycle)
+    (define-key keymap "l" '+workspace/display)
+    (define-key keymap "1" '+workspace/switch-to-0)
+    (define-key keymap "2" '+workspace/switch-to-1)
+    (define-key keymap "3" '+workspace/switch-to-2)
+    (define-key keymap "4" '+workspace/switch-to-3)
+    (define-key keymap "5" '+workspace/switch-to-4)
+    keymap))
+(defalias 'workspace workspace-quick-keymap)
+(global-set-key (kbd "C-c w") 'workspace)
+
 ;;;define action when switch to another project,switch to buffer if has, or open
 ;;; file
 (defun projectile-switch-to-one-buffer-if-has ()
@@ -74,6 +91,9 @@
 ;;; disable emacs-FAQ keymap
 (global-unset-key (kbd "C-h C-f"))
 (global-set-key (kbd "C-h f") 'describe-function)
+
+;; A quick way to jump to the definition of a function given its key binding
+(global-set-key (kbd "C-h K") 'find-function-on-key)
 
 (meow-define-keys
     'insert
