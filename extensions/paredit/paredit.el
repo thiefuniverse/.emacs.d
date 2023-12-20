@@ -24,6 +24,7 @@
 ;;; Paredit - https://paredit.org
 ;;;
 ;;; Latest release: https://paredit.org/paredit.el
+
 ;;; Current development version: https://paredit.org/paredit-beta.el
 ;;; Release notes: https://paredit.org/NEWS
 

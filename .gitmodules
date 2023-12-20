@@ -34,3 +34,6 @@
 [submodule "extensions/all-the-icons"]
 	path = extensions/all-the-icons
 	url = https://github.com/domtronn/all-the-icons.el.git
+[submodule "extensions/powerline"]
+	path = extensions/powerline
+	url = https://github.com/milkypostman/powerline.git

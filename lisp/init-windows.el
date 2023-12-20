@@ -124,5 +124,75 @@ Call a second time to restore the original window configuration."
 (setq shackle-select-reused-windows t)
 (shackle-mode)
 
+
+(require 'centaur-tabs)
+(centaur-tabs-headline-match)
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-icons nil)
+(setq centaur-tabs-set-bar 'over)
+(setq centaur-tabs-set-close-button nil)
+(setq centaur-tabs-style "bar"
+      centaur-tabs-height 32
+      centaur-tabs-set-icons nil
+      centaur-tabs-show-new-tab-button t
+      centaur-tabs-set-modified-marker t
+      centaur-tabs-show-navigation-buttons nil
+      centaur-tabs-set-bar 'under
+      centaur-tabs-show-count nil
+      ;; centaur-tabs-label-fixed-length 15
+      ;; centaur-tabs-gray-out-icons 'buffer
+      ;; centaur-tabs-plain-icons t
+      x-underline-at-descent-line t
+      centaur-tabs-left-edge-margin nil)
+(defun centaur-tabs-hide-tab (x)
+  "Do no to show buffer X in tabs."
+  (let ((name (format "%s" x)))
+    (or
+     ;; Current window is not dedicated window.
+     (window-dedicated-p (selected-window))
+
+     (string= "dired-mode" (buffer-local-value 'major-mode x))
+     ;; Buffer name not match below blacklist.
+     (string-prefix-p "*epc" name)
+     (string-prefix-p "*helm" name)
+     (string-prefix-p "*Helm" name)
+     (string-prefix-p "*Compile-Log*" name)
+     (string-prefix-p "*lsp" name)
+     (string-prefix-p "*company" name)
+     (string-prefix-p "*Flycheck" name)
+     (string-prefix-p "*tramp" name)
+     (string-prefix-p " *Mini" name)
+     (string-prefix-p "*help" name)
+     (string-prefix-p "*straight" name)
+     (string-prefix-p " *temp" name)
+     (string-prefix-p "*Help" name)
+     (string-prefix-p "*mybuf" name)
+     (string-suffix-p ".el.gz" name)
+
+     ;; Is not magit buffer.
+     (and (string-prefix-p "magit" name)
+          (not (file-name-extension name)))
+     )))
+
+(setq centaur-tabs-ace-jump-keys
+      '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
+(setq centaur-tabs-ace-jump-dim-buffer nil)
+(centaur-tabs-mode)
+(centaur-tabs-group-by-projectile-project)
+
+
+(defun my-projectile-in-submodule-p ()
+  "Check if the current project is a submodule of another project."
+  (interactive)
+  (when (and (projectile-project-p)
+             (eq 'git (projectile-project-vcs)))
+    (let* ((current-root (projectile-project-root))
+           (git-command (concat "git --git-dir=" current-root "/.git "
+                                "rev-parse --show-superproject-working-tree")))
+      (with-temp-buffer
+        (unless (zerop (call-process-shell-command git-command nil t))
+          (message "This project is a submodule.")
+          t)))))
+
 (provide 'init-windows)
 ;;; init-windows.el ends here

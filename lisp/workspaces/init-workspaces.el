@@ -51,8 +51,7 @@ stored in `persp-save-dir'.")
       persp-auto-resume-time 1.0
       persp-auto-save-opt (if noninteractive 0 1)) ; auto-save on kill
 
-
-  ;;;; Create main workspace
+;;;; Create main workspace
 ;; The default perspective persp-mode creates is special and doesn't represent
 ;; a real persp object, so buffers can't really be assigned to it, among other
 ;; quirks, so I replace it with a "main" perspective.

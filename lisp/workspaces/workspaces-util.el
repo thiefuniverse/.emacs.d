@@ -205,9 +205,6 @@ throws an error."
 ;;; Commands
 
 ;;;###autoload
-(defalias '+workspace/restore-last-session #'doom/quickload-session)
-
-;;;###autoload
 (defun +workspace/load (name)
   "Load a workspace and switch to it. If called with C-u, try to reload the
 current workspace (by name) from session files."
@@ -593,7 +590,7 @@ This be hooked to `projectile-after-switch-project-hook'."
     (set-persp-parameter
      'tab-bar-tabs (tab-bar-tabs))
     (set-persp-parameter 'tab-bar-closed-tabs tab-bar-closed-tabs)))
-
+(+workspaces-save-tab-bar-data-h 1)
 ;;;###autoload
 (defun +workspaces-save-tab-bar-data-to-file-h (&rest _)
   "Save the current workspace's tab bar data to file."
@@ -607,8 +604,32 @@ This be hooked to `projectile-after-switch-project-hook'."
   "Restores the tab bar data of the workspace we have just switched to."
   (tab-bar-tabs-set (persp-parameter 'tab-bar-tabs))
   (setq tab-bar-closed-tabs (persp-parameter 'tab-bar-closed-tabs))
-  (tab-bar--update-tab-bar-lines t))
+  (tab-bar--update-tab-bar-lines t)
 
+  )
+(defun tab-bar--update-tab-bar-lines (&optional frames)
+  "Update the `tab-bar-lines' frame parameter in FRAMES.
+If the optional parameter FRAMES is omitted, update only
+the currently selected frame.  If it is t, update all frames
+as well as the default for new frames.  Otherwise FRAMES should be
+a list of frames to update."
+  (let ((frame-lst (cond ((null frames)
+                          (list (selected-frame)))
+                         ((eq frames t)
+                          (frame-list))
+                         (t frames))))
+    ;; Loop over all frames and update `tab-bar-lines'
+    (dolist (frame frame-lst)
+      (unless (or (frame-parameter frame 'tab-bar-lines-keep-state)
+                  (and (eq auto-resize-tab-bars 'grow-only)
+                       (> (frame-parameter frame 'tab-bar-lines) 1)))
+        (set-frame-parameter frame 'tab-bar-lines
+                             (tab-bar--tab-bar-lines-for-frame frame)))))
+  ;; Update `default-frame-alist'
+  (when (eq frames t)
+    (setq default-frame-alist
+          (cons (cons 'tab-bar-lines (if (and tab-bar-mode (eq tab-bar-show t)) 1 0))
+                (assq-delete-all 'tab-bar-lines default-frame-alist)))))
 ;;;###autoload
 (defun +workspaces-load-tab-bar-data-from-file-h (&rest _)
   "Restores the tab bar data from file."

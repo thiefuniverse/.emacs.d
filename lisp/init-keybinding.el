@@ -22,23 +22,24 @@
 (global-set-key (kbd "C-c s") 'consult-project-buffer)
 (global-set-key (kbd "C-c d") 'lsp-bridge-find-def)
 (global-set-key (kbd "C-c ,") 'lsp-bridge-find-def-return)
+(global-set-key (kbd "C-c a") 'centaur-tabs-ace-jump)
 
-(defcustom quick-close-buffer-list '("*Help*") "define close window name")
-(defun delete-other-or-popup-window ()
-  "Close windows containing specific buffer names from the list."
-  (interactive)
-  (let ((has-quick-close-window nil))
-    (walk-windows
-     (lambda (w)
-       (let ((buf (window-buffer w)))
-         ;; Check if the buffer's name is in the list of buffers to close
-         (when (and (buffer-live-p buf)
-                    (member (buffer-name buf) quick-close-buffer-list))
-           (progn (kill-buffer buf)
-                  (setq has-quick-close-window t))))))
-    (if (not has-quick-close-window)
-        (delete-other-window))))
-(global-set-key (kbd "C-c k") 'delete-other-window)
+;; (defcustom quick-close-buffer-list '("*Help*") "define close window name")
+;; (defun delete-other-or-popup-window ()
+;;   "Close windows containing specific buffer names from the list."
+;;   (interactive)
+;;   (let ((has-quick-close-window nil))
+;;     (walk-windows
+;;      (lambda (w)
+;;        (let ((buf (window-buffer w)))
+;;          ;; Check if the buffer's name is in the list of buffers to close
+;;          (when (and (buffer-live-p buf)
+;;                     (member (buffer-name buf) quick-close-buffer-list))
+;;            (progn (kill-buffer buf)
+;;                   (setq has-quick-close-window t))))))
+;;     (if (not has-quick-close-window)
+;;         (delete-other-window))))
+(global-set-key (kbd "C-c k") 'delete-other-windows)
 
 (defvar search-rg-quick-keymap
   (let ((keymap (make-keymap)))
