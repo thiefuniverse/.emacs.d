@@ -175,7 +175,8 @@ Call a second time to restore the original window configuration."
      )))
 
 (setq centaur-tabs-ace-jump-keys
-      '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
+      '(?a ?s ?d ?f ?j ?k ?l ?g ?h ?n ?m ?, ?v ?c ?x ?z ?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9 ?0
+           ))
 (setq centaur-tabs-ace-jump-dim-buffer nil)
 (centaur-tabs-mode)
 (centaur-tabs-group-by-projectile-project)
