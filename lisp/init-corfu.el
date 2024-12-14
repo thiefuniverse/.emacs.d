@@ -2,7 +2,6 @@
 
 (use-package corfu
   ;; Optional customizations
-  :ensure t
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
