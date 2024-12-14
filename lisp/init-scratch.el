@@ -1,5 +1,5 @@
 ;;; core/autoload/scratch.el -*- lexical-binding: t; -*-
-(require 's)
+;;;(require 's)
 
 (defun doom-unquote (exp)
   "Return EXP unquoted."

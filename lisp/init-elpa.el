@@ -14,12 +14,9 @@
 
 
 ;;; Standard package repositories
-(setq package-archives '())
-(add-to-list 'package-archives '( "melpa-cn" . "http://1.15.88.122/melpa/") t)
-(add-to-list 'package-archives '( "org-cn" . "http://1.15.88.122/org/") t)
-(add-to-list 'package-archives '( "gnu-cn" . "http://1.15.88.122/gnu/") t)
-;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
-
+(setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 
 ;; Work-around for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
@@ -94,14 +91,14 @@ advice for `require-package', to which ARGS are passed."
                (seq-uniq (append sanityinc/required-packages package-selected-packages))))))
 
 
-(require-package 'fullframe)
+;;;(require-package 'fullframe)
 ;;; make list-packages get full frame view
-(fullframe list-packages quit-window)
+;;;(fullframe list-packages quit-window)
 
 ;; 
-(setq package-check-signature nil)
-(let ((package-check-signature nil))
-  (require-package 'gnu-elpa-keyring-update))
+;;(setq package-check-signature nil)
+;;(let ((package-check-signature nil))
+;;  (require-package 'gnu-elpa-keyring-update))
 
 
 (defun sanityinc/set-tabulated-list-column-width (col-name width)
