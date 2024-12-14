@@ -58,7 +58,6 @@
   (require 'init-projectile)
   (require 'init-meow)
   (require 'init-compile)
-  (require 'init-org)
  ;;;(require 'init-python)
   (require 'init-paredit)
   (require 'init-lisp)

@@ -13,7 +13,6 @@ CVS
 .*.lock
 /tramp
 /TODO
-/.org-id-locations
 cookies
 /newsticker
 \#*
@@ -36,7 +35,6 @@ site-lisp/package/
 /eshell
 /.cask/
 /.sx/
-/org-clock-save.el
 /ditaa*.jar
 /ido.last
 /recentf
@@ -55,3 +53,9 @@ site-lisp/package/
 /smex-items
 /eln-cache/
 /projects
+.vscode
+.last-package-update-day
+projectile.cache
+server
+test
+scratch

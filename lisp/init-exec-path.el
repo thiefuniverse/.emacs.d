@@ -115,7 +115,7 @@ The result is a list of (NAME . VALUE) pairs."
 ;; (call-process                            "C:/tools/emacs-28.0.91/libexec/emacs/28.0.91/x86_64-w64-mingw32/cmdproxy.exe" "-l" "-i" "-c" "c:/Program Files/Git/usr/bin/printf.exe '__RESULT\\000%s\\000%s\\000__RESULT' \"%PATH%\" \"%PATH%\"")
 
 (with-eval-after-load 'exec-path-from-shell
-  (dolist (var '("RIME_USER_DATA" "LIBRIME_ROOT" "ORG_STORE_PATH" "SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE" "NIX_SSL_CERT_FILE" "NIX_PATH"))
+  (dolist (var '("RIME_USER_DATA" "LIBRIME_ROOT" "SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE" "NIX_SSL_CERT_FILE" "NIX_PATH"))
     (add-to-list 'exec-path-from-shell-variables var)))
 
 (when (or (memq window-system '(mac ns x pgtk))

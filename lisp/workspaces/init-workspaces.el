@@ -200,8 +200,7 @@ stored in `persp-save-dir'.")
                    (counsel-projectile-switch-project-by-name project))) "search project")
           ("xs" counsel-projectile-switch-project-action-run-shell "invoke shell from project root")
           ("xe" counsel-projectile-switch-project-action-run-eshell "invoke eshell from project root")
-          ("xt" counsel-projectile-switch-project-action-run-term "invoke term from project root")
-          ("X" counsel-projectile-switch-project-action-org-capture "org-capture into project")))
+          ("xt" counsel-projectile-switch-project-action-run-term "invoke term from project root")))
 
 
 ;; Don't bother auto-saving the session if no real buffers are open.

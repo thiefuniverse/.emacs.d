@@ -1337,9 +1337,11 @@ BEG and END narrow the scope where candidates are searched."
                               c2)))
                      current-prefix-arg
                      nil nil))
-  (when (eq char1 ?)
+  (when (eq char1 ?
+)
     (setq char1 ?\n))
-  (when (eq char2 ?)
+  (when (eq char2 ?
+)
     (setq char2 ?\n))
   (avy-with avy-goto-char-2
     (avy-jump
@@ -2200,49 +2202,6 @@ The window scope is determined by `avy-all-windows' (ARG negates it)."
               (goto-char snd-line-point)
               (transpose-lines 0))
             (avy-transpose-lines-in-region)))))))
-
-;; ** Org-mode
-(defvar org-reverse-note-order)
-(declare-function org-refile "org")
-(declare-function org-back-to-heading "org")
-(declare-function org-reveal "org")
-
-(defvar org-after-refile-insert-hook)
-
-(defun avy-org-refile-as-child ()
-  "Refile current heading as first child of heading selected with `avy.'"
-  ;; Inspired by `org-teleport': http://kitchingroup.cheme.cmu.edu/blog/2016/03/18/Org-teleport-headlines/
-  (interactive)
-  (let* ((org-reverse-note-order t)
-         (marker (save-excursion
-                   (avy-with avy-goto-line
-                     (unless (eq 't (avy-jump (rx bol (1+ "*") (1+ space))))
-                       ;; `avy-jump' returns t when aborted with C-g.
-                       (point-marker)))))
-         (filename (buffer-file-name (or (buffer-base-buffer (marker-buffer marker))
-                                         (marker-buffer marker))))
-         (rfloc (list nil filename nil marker))
-         ;; Ensure the refiled heading is visible.
-         (org-after-refile-insert-hook (if (member 'org-reveal org-after-refile-insert-hook)
-                                           org-after-refile-insert-hook
-                                         (cons #'org-reveal org-after-refile-insert-hook))))
-    (when marker
-      ;; Only attempt refile if avy session was not aborted.
-      (org-refile nil nil rfloc))))
-
-(defun avy-org-goto-heading-timer (&optional arg)
-  "Read one or many characters and jump to matching Org headings.
-The window scope is determined by `avy-all-windows' (ARG negates it)."
-  (interactive "P")
-  (let ((avy-all-windows (if arg
-                             (not avy-all-windows)
-                           avy-all-windows)))
-    (avy-with avy-goto-char-timer
-      (avy-process
-       (avy--read-candidates
-        (lambda (input)
-          (format "^\\*+ .*\\(%s\\)" input))))
-      (org-back-to-heading))))
 
 (provide 'avy)
 
