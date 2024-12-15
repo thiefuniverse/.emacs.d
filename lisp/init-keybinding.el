@@ -1,98 +1,81 @@
-(defvar jump-quick-keymap
+(defvar window-keymap
   (let ((keymap (make-keymap)))
-    (define-key keymap "l" 'consult-line)
-    (define-key keymap "w" 'avy-goto-word-1)
-    (define-key keymap "f" 'switch-window)
-    (define-key keymap "k" 'consult-buffer)
+    (define-key keymap (kbd "u") #'winner-undo)
+    (define-key keymap (kbd "r") #'winner-redo)
+    (define-key keymap (kbd "c") #'delete-window)
     keymap))
+;; define an alias for your keymap
+(defalias 'window window-keymap)
 
-(defalias 'jump jump-quick-keymap)
-(global-set-key (kbd "C-c j") 'jump)
-
-(global-set-key (kbd "C-c ;") 'execute-extended-command)
-(global-set-key (kbd "C-c P") 'edit-config-file)
-(global-set-key (kbd "C-c `") 'jump-scratch)
-(global-set-key (kbd "C-c -") 'split-window-below)
-(global-set-key (kbd "C-c \\") 'split-window-right)
-(global-set-key (kbd "C-c t") 'projectile-find-other-file)
-(global-set-key (kbd "C-c o") 'switch-window)
-(global-set-key (kbd "C-c e") 'eval-last-sexp)
-(global-set-key (kbd "C-c p") 'projectile-switch-project)
-;;;(global-set-key (kbd "C-c a") 'dirvish-fd)
-(global-set-key (kbd "C-c s") 'consult-project-buffer)
-(global-set-key (kbd "C-c d") 'lsp-bridge-find-def)
-(global-set-key (kbd "C-c ,") 'lsp-bridge-find-def-return)
-(global-set-key (kbd "C-c a") 'centaur-tabs-ace-jump)
-
-;; (defcustom quick-close-buffer-list '("*Help*") "define close window name")
-;; (defun delete-other-or-popup-window ()
-;;   "Close windows containing specific buffer names from the list."
-;;   (interactive)
-;;   (let ((has-quick-close-window nil))
-;;     (walk-windows
-;;      (lambda (w)
-;;        (let ((buf (window-buffer w)))
-;;          ;; Check if the buffer's name is in the list of buffers to close
-;;          (when (and (buffer-live-p buf)
-;;                     (member (buffer-name buf) quick-close-buffer-list))
-;;            (progn (kill-buffer buf)
-;;                   (setq has-quick-close-window t))))))
-;;     (if (not has-quick-close-window)
-;;         (delete-other-window))))
-(global-set-key (kbd "C-c k") 'delete-other-windows)
-
-(defvar search-rg-quick-keymap
+(defvar jump-keymap
   (let ((keymap (make-keymap)))
-    (define-key keymap "r" 'projectile-ripgrep)
-    (define-key keymap "g" 'rg)
+    (define-key keymap (kbd "l") #'consult-line)
+    (define-key keymap (kbd "w") #'avy-goto-word-1)
+    (define-key keymap (kbd "k") #'consult-buffer)
+    (define-key keymap (kbd "l") #'consult-imenu)
+    (define-key keymap (kbd "j") #'consult-project-buffer)
     keymap))
-(defalias 'search-rg search-rg-quick-keymap)
-(global-set-key (kbd "C-c r") 'search-rg)
+; define an alias for your keymap
+(defalias 'jump jump-keymap)
+
+(defvar file-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap (kbd "r") #'consult-recent-file)
+    (define-key keymap (kbd "k") #'kill-current-buffer)
+    (define-key keymap (kbd "c") #'consult-yank-from-kill-ring)
+    (define-key keymap (kbd "s") #'save-buffer)
+    keymap))
+; define an alias for your keymap
+(defalias 'file file-keymap)
+
+(defvar project-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap (kbd "x") #'jump-project-scratch)
+    (define-key keymap (kbd "f") #'projectile-find-file)
+    (define-key keymap (kbd "b") #'consult-project-buffer)
+    (define-key keymap (kbd "s") #'project-shell)
+    (define-key keymap (kbd "p") #'projectile-switch-project)
+    (define-key keymap (kbd "r") #'projectile-ripgrep)
+    (define-key keymap (kbd "g") #'rg)
+    keymap))
+; define an alias for your keymap
+(defalias 'project project-keymap)
 
 (defvar workspace-quick-keymap
   (let ((keymap (make-keymap)))
     (define-key keymap "n" '+workspace/new)
     (define-key keymap "d" '+workspace/delete)
-    (define-key keymap "w" '+workspace/switch-to)
+    (define-key keymap "j" '+workspace/switch-to)
     (define-key keymap "r" '+workspace/rename)
-    (define-key keymap "c" '+workspace/cycle)
+    (define-key keymap "s" '+workspace/cycle)
     (define-key keymap "l" '+workspace/display)
-    (define-key keymap "1" '+workspace/switch-to-0)
-    (define-key keymap "2" '+workspace/switch-to-1)
-    (define-key keymap "3" '+workspace/switch-to-2)
-    (define-key keymap "4" '+workspace/switch-to-3)
-    (define-key keymap "5" '+workspace/switch-to-4)
     keymap))
 (defalias 'workspace workspace-quick-keymap)
-(global-set-key (kbd "C-c w") 'workspace)
 
-;;;define action when switch to another project,switch to buffer if has, or open
-;;; file
-(defun projectile-switch-to-one-buffer-if-has ()
-  "Switch to a project buffer."
-  (let ((bufs (projectile-project-buffers)))
-    (if (> (length bufs) 0)
-        (switch-to-buffer (car bufs))
-      (projectile-find-file))))
-(setq projectile-switch-project-action 'projectile-switch-to-one-buffer-if-has)
-
-(defvar file-quick-keymap
-  (let ((keymap (make-keymap)))
-    (define-key keymap "r" 'consult-recent-file)
-    (define-key keymap "d" 'delete-window)
-    (define-key keymap "k" 'kill-current-buffer)
-    (define-key keymap "j" 'projectile-find-file)
-    (define-key keymap "i" 'ido-dired)
-    keymap))
-(defalias 'file file-quick-keymap)
-(global-set-key (kbd "C-c f") 'file)
-
+(meow-leader-define-key
+'("a" . centaur-tabs-ace-jump)
+'("d" . xref-find-definitions)
+'(";" . execute-extended-command)
+'("P" . edit-config-file)
+'("x" . jump-scratch)
+'("k" . delete-other-windows)
+'("," . pop-tag-mark)
+'("-" . split-window-below)
+'("\\" . split-window-right)
+'("g" . goto-line)
+'("t" . switch-between-cpp-h)
+'("o" . switch-window)
+'("e" . eval-last-sexp)
+'("j" . jump)
+'("f" . file)
+'("h" . help)
+'("p" . project)
+'("s" . workspace))
 
 (global-unset-key (kbd "C-c C-f"))
 ;;; disable emacs-FAQ keymap
 (global-unset-key (kbd "C-h C-f"))
 (global-set-key (kbd "C-h f") 'describe-function)
-
 ;; A quick way to jump to the definition of a function given its key binding
 (global-set-key (kbd "C-h K") 'find-function-on-key)
 
@@ -101,17 +84,11 @@
   '("C-k" . backward-delete-char)
   '("C-j" . avy-goto-word-1)
   )
-
-(meow-define-keys
-    'normal
-  '("P" . move-dup-duplicate-down)
-  )
-
+;;; modify evil mode actions
 (define-key minibuffer-local-map (kbd "C-;") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-map (kbd "C-k") 'backward-delete-char)
-(define-key minibuffer-local-map (kbd "M-k") 'backward-kill-word)
+(define-key minibuffer-local-map (kbd "M-k") 'backward-delete-word)
 (define-key minibuffer-local-map (kbd "C-l") 'vertico-exit)
-
 
 ;;; set local leader
 (provide 'init-keybinding)

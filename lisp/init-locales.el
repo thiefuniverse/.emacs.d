@@ -67,5 +67,7 @@
              return (set-fontset-font t '(#x4e00 . #x9fff) font))))
 (add-hook 'server-after-make-frame-hook #'flythief/setup-fonts)
 
+(flythief/setup-fonts)
+
 (provide 'init-locales)
 ;;; init-locales.el ends here

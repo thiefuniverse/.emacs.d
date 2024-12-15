@@ -158,22 +158,22 @@ there is no current file, eval the current buffer."
 
 ;; Enable desired features for all lisp modes
 
-(defun sanityinc/enable-check-parens-on-save ()
-  "Run `check-parens' when the current buffer is saved."
-  (add-hook 'after-save-hook #'check-parens nil t))
+;;(defun sanityinc/enable-check-parens-on-save ()
+;;  "Run `check-parens' when the current buffer is saved."
+;;  (add-hook 'after-save-hook #'check-parens nil t))
 
-(defvar sanityinc/lispy-modes-hook
-  '(enable-paredit-mode
-    sanityinc/enable-check-parens-on-save)
-  "Hook run in all Lisp modes.")
+;;(defvar sanityinc/lispy-modes-hook
+;;  '(enable-paredit-mode
+;;    sanityinc/enable-check-parens-on-save)
+;;  "Hook run in all Lisp modes.")
 
 
-(when(require 'aggressive-indent)
-  (add-to-list 'sanityinc/lispy-modes-hook 'aggressive-indent-mode))
+;;(when(require 'aggressive-indent)
+;;  (add-to-list 'sanityinc/lispy-modes-hook 'aggressive-indent-mode))
 
-(defun sanityinc/lisp-setup ()
-  "Enable features useful in any Lisp mode."
-  (run-hooks 'sanityinc/lispy-modes-hook))
+;;(defun sanityinc/lisp-setup ()
+;;  "Enable features useful in any Lisp mode."
+;;  (run-hooks 'sanityinc/lispy-modes-hook))
 
 (defun sanityinc/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
@@ -190,8 +190,8 @@ there is no current file, eval the current buffer."
 
 (require 'derived)
 
-(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/lispy-modes))
-  (add-hook hook 'sanityinc/lisp-setup))
+;;(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/lispy-modes))
+;;  (add-hook hook 'sanityinc/lisp-setup))
 
 (dolist (hook (mapcar #'derived-mode-hook-name sanityinc/elispy-modes))
   (add-hook hook 'sanityinc/emacs-lisp-setup))

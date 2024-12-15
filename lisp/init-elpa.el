@@ -14,11 +14,10 @@
 
 
 ;;; Standard package repositories
-(setq package-archives '())
-(add-to-list 'package-archives '( "melpa-cn" . "http://1.15.88.122/melpa/") t)
-(add-to-list 'package-archives '( "org-cn" . "http://1.15.88.122/org/") t)
-(add-to-list 'package-archives '( "gnu-cn" . "http://1.15.88.122/gnu/") t)
-;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
+(setq package-archives '(("gnu"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(package-initialize)
 
 
 

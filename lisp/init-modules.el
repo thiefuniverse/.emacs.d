@@ -38,7 +38,6 @@
   ;; Load configs for specific features and modes
   (require 'diminish)
   (require 'scratch)
-  (require 'command-log-mode)
   (require 'init-frame-hooks)
   (require 'init-themes)
   (require 'init-osx-keys)
@@ -46,7 +45,7 @@
   (require 'init-isearch)
   (require 'init-grep)
   (require 'init-scratch)
-  (require 'init-completion)
+ ;;(require 'init-completion)
  ;;;(require 'init-corfu) ;; completion
   (require 'init-recentf)
   (require 'init-minibuffer)
@@ -59,9 +58,9 @@
   (require 'init-meow)
   (require 'init-compile)
  ;;;(require 'init-python)
-  (require 'init-paredit)
-  (require 'init-lisp)
-  (require 'init-common-lisp)
+  ;;;(require 'init-paredit)
+  ;;;(require 'init-lisp)
+  ;;;(require 'init-common-lisp)
   (when *spell-check-support-enabled*
     (require 'init-spelling))
   (require 'init-folding)

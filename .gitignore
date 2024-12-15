@@ -60,3 +60,4 @@ server
 test
 scratch
 org-persist
+org-clock-save.el

@@ -23,20 +23,20 @@
 ;; Use paredit in the minibuffer
 ;; TODO: break out into separate package
 ;; http://emacsredux.com/blog/2013/04/18/evaluate-emacs-lisp-in-the-minibuffer/
-(add-hook 'minibuffer-setup-hook 'sanityinc/conditionally-enable-paredit-mode)
-
-(defvar paredit-minibuffer-commands '(eval-expression
-                                      pp-eval-expression
-                                      eval-expression-with-eldoc
-                                      ibuffer-do-eval
-                                      ibuffer-do-view-and-eval)
-  "Interactive commands for which paredit should be enabled in the minibuffer.")
-
-(defun sanityinc/conditionally-enable-paredit-mode ()
-  "Enable paredit during lisp-related minibuffer commands."
-  (if (memq this-command paredit-minibuffer-commands)
-      (enable-paredit-mode)))
-
+;;(add-hook 'minibuffer-setup-hook 'sanityinc/conditionally-enable-paredit-mode)
+;;
+;;(defvar paredit-minibuffer-commands '(eval-expression
+;;                                      pp-eval-expression
+;;                                      eval-expression-with-eldoc
+;;                                      ibuffer-do-eval
+;;                                      ibuffer-do-view-and-eval)
+;;  "Interactive commands for which paredit should be enabled in the minibuffer.")
+;;
+;;(defun sanityinc/conditionally-enable-paredit-mode ()
+;;  "Enable paredit during lisp-related minibuffer commands."
+;;  (if (memq this-command paredit-minibuffer-commands)
+;;      (enable-paredit-mode)))
+;;
 
 (provide 'init-paredit)
 ;;; init-paredit.el ends here

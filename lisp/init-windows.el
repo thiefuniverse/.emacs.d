@@ -97,8 +97,6 @@ Call a second time to restore the original window configuration."
              (if was-dedicated "no longer " "")
              (buffer-name))))
 
-(global-set-key (kbd "C-c <down>") 'sanityinc/toggle-current-window-dedication)
-
 
 (unless (memq window-system '(nt w32))
   (require 'windswap)
