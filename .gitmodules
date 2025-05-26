@@ -37,3 +37,6 @@
 [submodule "extensions/powerline"]
 	path = extensions/powerline
 	url = https://github.com/milkypostman/powerline.git
+[submodule "extensions/rust-mode"]
+	path = extensions/rust-mode
+	url = https://github.com/rust-lang/rust-mode.git

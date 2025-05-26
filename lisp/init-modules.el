@@ -46,11 +46,14 @@
   (require 'init-grep)
   (require 'init-scratch)
  ;;(require 'init-completion)
- ;;;(require 'init-corfu) ;; completion
+  (require 'init-corfu) ;; completion
   (require 'init-recentf)
   (require 'init-minibuffer)
   (require 'init-windows)
   (require 'init-sessions)
+
+  ;; rust
+  (require 'init-rust)
 
   (require 'init-editing-utils)
   (require 'init-whitespace)
