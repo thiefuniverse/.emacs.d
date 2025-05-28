@@ -52,6 +52,18 @@
     keymap))
 (defalias 'workspace workspace-quick-keymap)
 
+(defun mode-specific-run ()
+  (interactive)
+  (cond
+   ((eq major-mode 'rust-mode)
+    (if (fboundp 'rust-run)
+        (rust-run)
+      (user-error "can't find rust-run function")))
+   ((eq major-mode 'emacs-lisp-mode)
+    (eval-buffer))
+   (t
+    (message "no mode config" major-mode))))
+
 (meow-leader-define-key
 '("a" . centaur-tabs-ace-jump)
 '("d" . xref-find-definitions)
@@ -70,7 +82,8 @@
 '("f" . file)
 '("h" . help)
 '("p" . project)
-'("s" . workspace))
+'("s" . workspace)
+'("r" . mode-specific-run))
 
 (global-unset-key (kbd "C-c C-f"))
 ;;; disable emacs-FAQ keymap
@@ -89,6 +102,7 @@
 (define-key minibuffer-local-map (kbd "C-k") 'backward-delete-char)
 (define-key minibuffer-local-map (kbd "M-k") 'backward-delete-word)
 (define-key minibuffer-local-map (kbd "C-l") 'vertico-exit)
+
 
 ;;; set local leader
 (provide 'init-keybinding)
