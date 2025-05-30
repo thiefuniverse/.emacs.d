@@ -75,8 +75,8 @@
    '("v" . meow-visit)
    '("/" . meow-visit)
    '("s" . save-buffer)
-   '("*" . meow-mark-word)
-   '("W" . meow-mark-symbol)
+   '("8" . meow-mark-word)
+   '("*" . meow-mark-symbol)
    '("X" . meow-goto-line)
    '("y" . meow-save)
    '("Y" . meow-sync-grab)
@@ -84,7 +84,6 @@
    '("z" . meow-pop-selection)
    '("'" . repeat)
    '("<escape>" . ignore)))
-
 
 (require 'meow)
 
@@ -108,6 +107,7 @@
 (setq meow-esc-delay 0.001)
 
 (meow-setup)
+
 (meow-setup-indicator)
 (meow-global-mode 1)
 
