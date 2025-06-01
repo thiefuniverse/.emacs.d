@@ -67,8 +67,8 @@
   (when *spell-check-support-enabled*
     (require 'init-spelling))
   (require 'init-folding)
-  (require 'init-dash)
   (require 'init-workspaces)
+  (require 'init-terminal)
 
   ;; Extra packages which don't require any configuration
   (when(require 'uptimes)

@@ -52,6 +52,15 @@
     keymap))
 (defalias 'workspace workspace-quick-keymap)
 
+
+(defvar eee-quick-keymap
+  (let ((keymap (make-keymap)))
+    (define-key keymap "l" 'ee-yazi-project)
+    (define-key keymap "g" 'ee-lazygit)
+    (define-key keymap "r" 'ee-rg)
+    keymap))
+(defalias 'eee eee-quick-keymap)
+
 (defun mode-specific-run ()
   (interactive)
   (cond
@@ -83,6 +92,7 @@
 '("h" . help)
 '("p" . project)
 '("s" . workspace)
+'("l" . eee)
 '("r" . mode-specific-run))
 
 (global-unset-key (kbd "C-c C-f"))
